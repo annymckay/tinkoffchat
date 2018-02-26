@@ -19,6 +19,25 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        print(#function)
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        print(#function)
+    }
+    override func viewWillLayoutSubviews() {
+        print(#function)
+    }
+    override func viewDidLayoutSubviews() {
+        print(#function)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        print(#function)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        print(#function)
+    }
+
 
 
 }
