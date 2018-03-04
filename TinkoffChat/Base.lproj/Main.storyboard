@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +14,93 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TinkoffChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-user" translatesAutoresizingMaskIntoConstraints="NO" id="lGL-w9-JdQ">
+                                <rect key="frame" x="20" y="40" width="280" height="280"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lGL-w9-JdQ" secondAttribute="height" multiplier="1:1" id="pXZ-kc-0CW"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpH-XJ-CWU">
+                                <rect key="frame" x="20" y="492" width="280" height="56"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="gFz-ps-6TF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Редактировать">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="editAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4rd-yN-40Q"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Аня Лихтарова" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vET-4x-rIn">
+                                <rect key="frame" x="20" y="340" width="280" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dUc-Ve-5bR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="751" text="Привет!" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5V-bH-HIf">
+                                <rect key="frame" x="20" y="380" width="70.5" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPW-z1-oFb">
+                                <rect key="frame" x="210" y="230" width="90" height="90"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="D7Z-OU-bB0"/>
+                                    <constraint firstAttribute="width" constant="90" id="S3k-zt-sDn"/>
+                                </constraints>
+                                <state key="normal" image="slr-camera-2-xxl"/>
+                                <connections>
+                                    <action selector="setProfilePhotoButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CgW-Wm-fIl"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="P5V-bH-HIf" secondAttribute="trailing" priority="749" constant="20" id="Clb-T0-ZH9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lGL-w9-JdQ" secondAttribute="trailing" constant="20" id="DK6-bh-0mq"/>
+                            <constraint firstItem="vET-4x-rIn" firstAttribute="top" secondItem="lGL-w9-JdQ" secondAttribute="bottom" constant="20" id="DLq-Lu-1Sh"/>
+                            <constraint firstItem="lGL-w9-JdQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HYE-4r-dz7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IpH-XJ-CWU" secondAttribute="trailing" constant="20" id="MPv-vi-jqE"/>
+                            <constraint firstItem="vET-4x-rIn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="PqA-nR-NSO"/>
+                            <constraint firstAttribute="bottom" secondItem="IpH-XJ-CWU" secondAttribute="bottom" constant="20" id="Qv0-32-tu8"/>
+                            <constraint firstItem="P5V-bH-HIf" firstAttribute="top" secondItem="vET-4x-rIn" secondAttribute="bottom" constant="10" id="d9Z-GX-30I"/>
+                            <constraint firstItem="P5V-bH-HIf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="f0T-sm-tqD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vET-4x-rIn" secondAttribute="trailing" constant="20" id="f5R-5n-SFe"/>
+                            <constraint firstItem="lGL-w9-JdQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="k2I-QX-cRk"/>
+                            <constraint firstItem="lGL-w9-JdQ" firstAttribute="bottom" secondItem="bPW-z1-oFb" secondAttribute="bottom" id="mvg-Iv-rep"/>
+                            <constraint firstItem="lGL-w9-JdQ" firstAttribute="trailing" secondItem="bPW-z1-oFb" secondAttribute="trailing" id="wPV-rT-vVd"/>
+                            <constraint firstItem="IpH-XJ-CWU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="x1U-ab-aTy"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="P5V-bH-HIf" id="kjI-1S-NeY"/>
+                        <outlet property="editButton" destination="IpH-XJ-CWU" id="EVO-j8-jYf"/>
+                        <outlet property="nameLabel" destination="vET-4x-rIn" id="8Ue-P7-5Bg"/>
+                        <outlet property="profilePhotoImage" destination="lGL-w9-JdQ" id="3AZ-s4-u5N"/>
+                        <outlet property="setProfilePhotoButton" destination="bPW-z1-oFb" id="X3R-B2-8FJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="140.625" y="114.08450704225352"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="placeholder-user" width="200" height="200"/>
+        <image name="slr-camera-2-xxl" width="85" height="85"/>
+    </resources>
 </document>
