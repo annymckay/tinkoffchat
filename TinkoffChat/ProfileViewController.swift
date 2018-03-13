@@ -9,8 +9,11 @@
 import UIKit
 import Photos
 
-class ViewController: UIViewController {
+class ProfileViewController: UIViewController {
     
+    @IBAction func hideProfileButton(_ sender: UIBarButtonItem) {
+        navigationController?.dismiss(animated: true, completion: nil)
+    }
     @IBOutlet var nameLabel: UILabel!
     
     @IBOutlet var descriptionLabel: UILabel!
@@ -90,20 +93,16 @@ class ViewController: UIViewController {
         setDesign()
         checkPermission()
         
-        print("<viewDidLoad()> \(editButton.frame)")
+        //print("<viewDidLoad()> \(editButton.frame)")
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("<viewDidAppear> \(editButton.frame)")
+       // print("<viewDidAppear> \(editButton.frame)")
         //Отличается потому что в методе viewDidLoad отображаются данные, только что полученные из storyboard'а - то есть данные для айфона выбранного в storyboard, в данном случае iphone SE. В методе viewDidAppear, который вызывается после того как view появился на экране, размеры уже рассчитаны для выбранного в симуляторе устройства -  iphone X в данном случае.
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        if let editButton = editButton {
-            print("<init> \(editButton.frame)")
-        } else {
-            print ("<init> Не удалось распечатать занчение editButton.frame")
-        }
+
         // Проблема в том, что editButton инициализируется в методе loadView(), который вызывается после init, поэтому в момент вызова init кнопки еще не существует и frame'а у нее соответвенно нет. Попытка обратиться к editButton в методе init приводит к ошибке "Unexpectedly found nil while unwrapping an Optional value"
         
     }
@@ -111,7 +110,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
