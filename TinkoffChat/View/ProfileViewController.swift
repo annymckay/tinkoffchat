@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController {
     
     @IBAction func setProfilePhotoButtonAction(_ sender: UIButton) {
         print("Выбери изображение профиля")
+        checkPermission()
         showSetProfilePhotoAlert()
     }
     
@@ -91,7 +92,6 @@ class ProfileViewController: UIViewController {
         
         imagePicker?.delegate = self
         setDesign()
-        checkPermission()
         
         //print("<viewDidLoad()> \(editButton.frame)")
     }
@@ -132,7 +132,6 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                 (newStatus) in
                 print("Acces to photos status is \(newStatus)")
                 if newStatus ==  PHAuthorizationStatus.authorized {
-                    /* do stuff here */
                     print("Access to photos has just granted by user")
                 }
             })

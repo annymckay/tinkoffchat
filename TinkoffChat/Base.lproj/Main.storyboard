@@ -79,6 +79,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="TinkoffChat" id="j8U-l4-zCK">
+                        <barButtonItem key="leftBarButtonItem" title="Themes" id="XYz-wy-AFZ">
+                            <connections>
+                                <segue destination="3Su-0Z-VFF" kind="presentation" id="0Qc-AI-Xx1"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Profile" id="pCO-Vr-rIs">
                             <connections>
                                 <segue destination="Z3R-IC-iWd" kind="presentation" id="Ocy-UZ-fzP"/>
@@ -92,6 +97,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wey-fH-X1L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-636" y="110.19490254872565"/>
+        </scene>
+        <!--Themes View Controller-->
+        <scene sceneID="ogx-LV-mGc">
+            <objects>
+                <viewController id="HGE-Wa-4DV" customClass="ThemesViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pWX-D4-5Ld">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qev-B5-lf6">
+                                <rect key="frame" x="80" y="311.5" width="215" height="44"/>
+                                <color key="backgroundColor" red="0.96600342562079622" green="0.99953407049999998" blue="0.78658635396803256" alpha="0.69290453767123283" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="Тема 2"/>
+                                <connections>
+                                    <action selector="setThemeButtonPressed:" destination="HGE-Wa-4DV" eventType="touchUpInside" id="csl-wr-9eq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kht-9k-PvB">
+                                <rect key="frame" x="79.5" y="232.5" width="215" height="44"/>
+                                <color key="backgroundColor" red="0.96600342562079622" green="0.99953407049999998" blue="0.78658635396803256" alpha="0.69290453767123283" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="Тема 1"/>
+                                <connections>
+                                    <action selector="setThemeButtonPressed:" destination="HGE-Wa-4DV" eventType="touchUpInside" id="52L-3h-98r"/>
+                                    <action selector="setThemeButtonPressed:" destination="0Ld-1W-s9I" eventType="touchUpInside" id="OqJ-Yo-fFg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gze-7B-izt">
+                                <rect key="frame" x="79.5" y="390.5" width="215" height="44"/>
+                                <color key="backgroundColor" red="0.96600342562079622" green="0.99953407049999998" blue="0.78658635396803256" alpha="0.69290453767123283" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="Тема 3"/>
+                                <connections>
+                                    <action selector="setThemeButtonPressed:" destination="HGE-Wa-4DV" eventType="touchUpInside" id="nul-hP-97P"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99953407049999998" green="0.86282124428735141" blue="0.0016826780151862235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qev-B5-lf6" firstAttribute="centerY" secondItem="pWX-D4-5Ld" secondAttribute="centerY" id="0ra-h8-O0k"/>
+                            <constraint firstItem="Gze-7B-izt" firstAttribute="width" secondItem="qev-B5-lf6" secondAttribute="width" id="DRT-pY-9Bz"/>
+                            <constraint firstItem="qev-B5-lf6" firstAttribute="leading" secondItem="Oc6-K6-OM4" secondAttribute="leading" constant="80" id="Gkh-QT-t8e"/>
+                            <constraint firstItem="qev-B5-lf6" firstAttribute="top" secondItem="Kht-9k-PvB" secondAttribute="bottom" constant="35" id="IWB-cQ-yHH"/>
+                            <constraint firstItem="Gze-7B-izt" firstAttribute="top" secondItem="qev-B5-lf6" secondAttribute="bottom" constant="35" id="Yiq-4f-xCZ"/>
+                            <constraint firstItem="Kht-9k-PvB" firstAttribute="centerX" secondItem="pWX-D4-5Ld" secondAttribute="centerX" id="ew7-Ep-00B"/>
+                            <constraint firstItem="Gze-7B-izt" firstAttribute="centerX" secondItem="pWX-D4-5Ld" secondAttribute="centerX" id="ppv-Re-eR2"/>
+                            <constraint firstItem="Kht-9k-PvB" firstAttribute="width" secondItem="qev-B5-lf6" secondAttribute="width" id="sfF-K7-jdf"/>
+                            <constraint firstItem="qev-B5-lf6" firstAttribute="centerX" secondItem="pWX-D4-5Ld" secondAttribute="centerX" id="tig-Gd-Hd5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Oc6-K6-OM4"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CHf-A3-FTZ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="LWm-gn-ezV">
+                            <connections>
+                                <action selector="hideButton:" destination="HGE-Wa-4DV" id="tbj-Xd-ZNu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mZD-bu-Ddq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0Ld-1W-s9I" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="264.5" y="1306.5"/>
         </scene>
         <!--Conversation View Controller-->
         <scene sceneID="OjG-AB-Jsh">
@@ -291,6 +360,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASw-Qg-kvm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="265" y="-307"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ID9-GQ-Ruo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Su-0Z-VFF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8yu-5f-t1Y">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HGE-Wa-4DV" kind="relationship" relationship="rootViewController" id="vmr-7G-v6Z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YaM-2f-LDQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-636" y="1307"/>
         </scene>
     </scenes>
     <resources>

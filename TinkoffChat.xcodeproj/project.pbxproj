@@ -11,6 +11,10 @@
 		952C4008205453C30055CE78 /* MessageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C4007205453C30055CE78 /* MessageCellView.swift */; };
 		95ABED1C2053EC0100F3E7E5 /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ABED1B2053EC0100F3E7E5 /* ConversationsListViewController.swift */; };
 		95ABED1E2053F1C000F3E7E5 /* ConversationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ABED1D2053F1C000F3E7E5 /* ConversationCellView.swift */; };
+		95ABF0CC205D867A00AFD10C /* ThemesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ABF0CB205D867A00AFD10C /* ThemesViewController.m */; };
+		95B8C9282065656100C1840B /* Themes.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B8C9272065656100C1840B /* Themes.m */; };
+		95B8C930206575A600C1840B /* ThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8C92F206575A600C1840B /* ThemesViewController.swift */; };
+		95B8C932206575D000C1840B /* ThemesSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8C931206575CF00C1840B /* ThemesSwift.swift */; };
 		95C133F92044164400FAB707 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C133F82044164400FAB707 /* AppDelegate.swift */; };
 		95C133FB2044164400FAB707 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C133FA2044164400FAB707 /* ProfileViewController.swift */; };
 		95C133FE2044164400FAB707 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95C133FC2044164400FAB707 /* Main.storyboard */; };
@@ -22,8 +26,16 @@
 /* Begin PBXFileReference section */
 		952C40052054528B0055CE78 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		952C4007205453C30055CE78 /* MessageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellView.swift; sourceTree = "<group>"; };
+		957CC57120650CB3003E9D15 /* Themes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Themes.h; sourceTree = "<group>"; };
+		957CC5722065101C003E9D15 /* ThemesViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemesViewControllerDelegate.h; sourceTree = "<group>"; };
 		95ABED1B2053EC0100F3E7E5 /* ConversationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
 		95ABED1D2053F1C000F3E7E5 /* ConversationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCellView.swift; sourceTree = "<group>"; };
+		95ABF0C9205D867900AFD10C /* TinkoffChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TinkoffChat-Bridging-Header.h"; sourceTree = "<group>"; };
+		95ABF0CA205D867A00AFD10C /* ThemesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemesViewController.h; sourceTree = "<group>"; };
+		95ABF0CB205D867A00AFD10C /* ThemesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThemesViewController.m; sourceTree = "<group>"; };
+		95B8C9272065656100C1840B /* Themes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Themes.m; sourceTree = "<group>"; };
+		95B8C92F206575A600C1840B /* ThemesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewController.swift; sourceTree = "<group>"; };
+		95B8C931206575CF00C1840B /* ThemesSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesSwift.swift; sourceTree = "<group>"; };
 		95C133F52044164400FAB707 /* TinkoffChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95C133F82044164400FAB707 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95C133FA2044164400FAB707 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -45,11 +57,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		95B8C92C206574BE00C1840B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				95C133FA2044164400FAB707 /* ProfileViewController.swift */,
+				95ABED1B2053EC0100F3E7E5 /* ConversationsListViewController.swift */,
+				952C40052054528B0055CE78 /* ConversationViewController.swift */,
+				95F3261320567F9B0009FD9F /* MessageShapeView.swift */,
+				95ABF0CA205D867A00AFD10C /* ThemesViewController.h */,
+				95ABF0CB205D867A00AFD10C /* ThemesViewController.m */,
+				957CC5722065101C003E9D15 /* ThemesViewControllerDelegate.h */,
+				95B8C92F206575A600C1840B /* ThemesViewController.swift */,
+				95B8C92D2065750900C1840B /* CellView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		95B8C92D2065750900C1840B /* CellView */ = {
+			isa = PBXGroup;
+			children = (
+				952C4007205453C30055CE78 /* MessageCellView.swift */,
+				95ABED1D2053F1C000F3E7E5 /* ConversationCellView.swift */,
+			);
+			path = CellView;
+			sourceTree = "<group>";
+		};
+		95B8C92E2065754300C1840B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				957CC57120650CB3003E9D15 /* Themes.h */,
+				95B8C9272065656100C1840B /* Themes.m */,
+				95B8C931206575CF00C1840B /* ThemesSwift.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		95C133EC2044164400FAB707 = {
 			isa = PBXGroup;
 			children = (
 				95C133F72044164400FAB707 /* TinkoffChat */,
 				95C133F62044164400FAB707 /* Products */,
+				95ABF0C9205D867900AFD10C /* TinkoffChat-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,13 +112,9 @@
 		95C133F72044164400FAB707 /* TinkoffChat */ = {
 			isa = PBXGroup;
 			children = (
+				95B8C92E2065754300C1840B /* Model */,
+				95B8C92C206574BE00C1840B /* View */,
 				95C133F82044164400FAB707 /* AppDelegate.swift */,
-				95ABED1B2053EC0100F3E7E5 /* ConversationsListViewController.swift */,
-				95ABED1D2053F1C000F3E7E5 /* ConversationCellView.swift */,
-				95C133FA2044164400FAB707 /* ProfileViewController.swift */,
-				952C40052054528B0055CE78 /* ConversationViewController.swift */,
-				952C4007205453C30055CE78 /* MessageCellView.swift */,
-				95F3261320567F9B0009FD9F /* MessageShapeView.swift */,
 				95C133FC2044164400FAB707 /* Main.storyboard */,
 				95C133FF2044164400FAB707 /* Assets.xcassets */,
 				95C134012044164400FAB707 /* LaunchScreen.storyboard */,
@@ -111,6 +155,7 @@
 				TargetAttributes = {
 					95C133F42044164400FAB707 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -155,8 +200,12 @@
 				95C133F92044164400FAB707 /* AppDelegate.swift in Sources */,
 				952C4008205453C30055CE78 /* MessageCellView.swift in Sources */,
 				952C40062054528B0055CE78 /* ConversationViewController.swift in Sources */,
+				95B8C930206575A600C1840B /* ThemesViewController.swift in Sources */,
+				95B8C932206575D000C1840B /* ThemesSwift.swift in Sources */,
 				95ABED1C2053EC0100F3E7E5 /* ConversationsListViewController.swift in Sources */,
 				95ABED1E2053F1C000F3E7E5 /* ConversationCellView.swift in Sources */,
+				95B8C9282065656100C1840B /* Themes.m in Sources */,
+				95ABF0CC205D867A00AFD10C /* ThemesViewController.m in Sources */,
 				95F3261420567F9B0009FD9F /* MessageShapeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,12 +343,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4E96C4KH82;
 				INFOPLIST_FILE = TinkoffChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.annalikhtarova.TinkoffChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TinkoffChat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -309,12 +362,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4E96C4KH82;
 				INFOPLIST_FILE = TinkoffChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.annalikhtarova.TinkoffChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TinkoffChat-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
