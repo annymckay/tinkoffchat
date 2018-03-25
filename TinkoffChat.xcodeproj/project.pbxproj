@@ -70,12 +70,8 @@
 		95B8C93320659E5000C1840B /* Themes */ = {
 			isa = PBXGroup;
 			children = (
-				957CC57120650CB3003E9D15 /* Themes.h */,
-				95B8C9272065656100C1840B /* Themes.m */,
+				95C926562066825A00A044E3 /* objective-c */,
 				95B8C931206575CF00C1840B /* ThemesSwift.swift */,
-				95ABF0CA205D867A00AFD10C /* ThemesViewController.h */,
-				95ABF0CB205D867A00AFD10C /* ThemesViewController.m */,
-				957CC5722065101C003E9D15 /* ThemesViewControllerDelegate.h */,
 				95B8C92F206575A600C1840B /* ThemesViewController.swift */,
 			);
 			path = Themes;
@@ -85,7 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				952C40052054528B0055CE78 /* ConversationViewController.swift */,
-				95ABED1B2053EC0100F3E7E5 /* ConversationsListViewController.swift */,
 				95B8C92D2065750900C1840B /* CellView */,
 			);
 			path = Conversation;
@@ -119,6 +114,7 @@
 		95C133F72044164400FAB707 /* TinkoffChat */ = {
 			isa = PBXGroup;
 			children = (
+				95C926572066828B00A044E3 /* ConversationsList */,
 				95B8C93520659EA200C1840B /* Profile */,
 				95B8C93420659E7300C1840B /* Conversation */,
 				95B8C93320659E5000C1840B /* Themes */,
@@ -129,6 +125,26 @@
 				95C134042044164400FAB707 /* Info.plist */,
 			);
 			path = TinkoffChat;
+			sourceTree = "<group>";
+		};
+		95C926562066825A00A044E3 /* objective-c */ = {
+			isa = PBXGroup;
+			children = (
+				957CC57120650CB3003E9D15 /* Themes.h */,
+				95B8C9272065656100C1840B /* Themes.m */,
+				95ABF0CA205D867A00AFD10C /* ThemesViewController.h */,
+				95ABF0CB205D867A00AFD10C /* ThemesViewController.m */,
+				957CC5722065101C003E9D15 /* ThemesViewControllerDelegate.h */,
+			);
+			path = "objective-c";
+			sourceTree = "<group>";
+		};
+		95C926572066828B00A044E3 /* ConversationsList */ = {
+			isa = PBXGroup;
+			children = (
+				95ABED1B2053EC0100F3E7E5 /* ConversationsListViewController.swift */,
+			);
+			path = ConversationsList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

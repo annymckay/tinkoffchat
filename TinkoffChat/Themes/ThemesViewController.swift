@@ -10,36 +10,45 @@ import UIKit
 
 class ThemesViewControllerSwift: UIViewController {
     
-    typealias SelectTheme = (UIColor) -> ()
+    typealias SelectTheme = (Theme) -> ()
     var model : ThemesSwift = ThemesSwift()
     var closure : SelectTheme?
+    var theme : Theme?
     @IBAction func hideButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func setThemeButtonPressed(_ sender: UIButton) {
-        var theme : UIColor?
-        if let themeName = sender.titleLabel?.text {
-            switch themeName {
-            case "Тема 1":
-                theme = self.model.theme1
-                self.closure?(theme!)
-            case "Тема 2":
-                theme = self.model.theme2
-                self.closure?(theme!)
-            case "Тема 3":
-                theme = self.model.theme3
-                self.closure?(theme!)
-            default:
-                theme = UIColor.yellow
-                self.closure?(theme!)
-            }
+        var theme : Theme
+        let buttonTag = sender.tag
+        switch buttonTag {
+        case 0:
+            theme = self.model.theme1!
+            self.closure?(theme)
+        case 1:
+            theme = self.model.theme2!
+            self.closure?(theme)
+        case 2:
+            theme = self.model.theme3!
+            self.closure?(theme)
+        default:
+            theme = Theme(barTintColor: UIColor.yellow, tintColor: UIColor.blue)
+            self.closure?(theme)
         }
-        self.view.backgroundColor = theme
+        self.theme = theme
+        setTheme()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTheme()
         
     }
-    
+    func setTheme(){
+        if let theme = self.theme {
+            self.view.backgroundColor = theme.barTintColor
+            navigationController?.navigationBar.barTintColor = theme.barTintColor
+            navigationController?.navigationBar.tintColor = theme.tintColor
+        }
+    }
 }

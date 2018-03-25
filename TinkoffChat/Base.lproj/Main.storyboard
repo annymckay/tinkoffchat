@@ -98,38 +98,47 @@
             </objects>
             <point key="canvasLocation" x="-636" y="110.19490254872565"/>
         </scene>
-        <!--Themes View Controller-->
+        <!--Themes View Controller Swift-->
         <scene sceneID="ogx-LV-mGc">
             <objects>
-                <viewController id="HGE-Wa-4DV" customClass="ThemesViewController" sceneMemberID="viewController">
+                <viewController id="HGE-Wa-4DV" customClass="ThemesViewControllerSwift" customModule="TinkoffChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pWX-D4-5Ld">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qev-B5-lf6">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qev-B5-lf6">
                                 <rect key="frame" x="80" y="311.5" width="215" height="44"/>
-                                <color key="backgroundColor" red="0.96600342562079622" green="0.99953407049999998" blue="0.78658635396803256" alpha="0.69290453767123283" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.99953407049999998" green="0.98973126622075702" blue="0.79052170843084468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="themeButton2"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <state key="normal" title="Тема 2"/>
+                                <state key="normal" title="Тёмная">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="setThemeButtonPressed:" destination="HGE-Wa-4DV" eventType="touchUpInside" id="csl-wr-9eq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kht-9k-PvB">
                                 <rect key="frame" x="79.5" y="232.5" width="215" height="44"/>
-                                <color key="backgroundColor" red="0.96600342562079622" green="0.99953407049999998" blue="0.78658635396803256" alpha="0.69290453767123283" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.99953407049999998" green="0.98973126622075702" blue="0.79052170843084468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="themeButton1"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <state key="normal" title="Тема 1"/>
+                                <state key="normal" title="Стандартная">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="setThemeButtonPressed:" destination="HGE-Wa-4DV" eventType="touchUpInside" id="52L-3h-98r"/>
                                     <action selector="setThemeButtonPressed:" destination="0Ld-1W-s9I" eventType="touchUpInside" id="OqJ-Yo-fFg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gze-7B-izt">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gze-7B-izt">
                                 <rect key="frame" x="79.5" y="390.5" width="215" height="44"/>
-                                <color key="backgroundColor" red="0.96600342562079622" green="0.99953407049999998" blue="0.78658635396803256" alpha="0.69290453767123283" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.99953407049999998" green="0.98973126622075702" blue="0.79052170843084468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="themeButton3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <state key="normal" title="Тема 3"/>
+                                <state key="normal" title="Светлая">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="setThemeButtonPressed:" destination="HGE-Wa-4DV" eventType="touchUpInside" id="nul-hP-97P"/>
                                 </connections>

@@ -11,7 +11,8 @@ import UIKit
 class ConversationsListViewController: UITableViewController {
     
     @IBOutlet var profileButton: UIBarButtonItem!
-
+    
+    var theme : Theme = Theme()
     func getDefaultChat(at index : Int) -> [Any?] {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM"
@@ -37,30 +38,31 @@ class ConversationsListViewController: UITableViewController {
                          ["Петров", "hasUnreadMessages: nil", false, nil],
                          ["Victor Parker", "Какое-то очень длинное сообщение, которое обрывается в какой-то момент", false, true],
                          ["Some Guy", nil, false, true],]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         profileButton.image = UIImage(named: "placeholder-user50x50")?.withRenderingMode(.alwaysOriginal)
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return defaultChats.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let identifier = "ConversationCellView"
-
+        
         if let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: identifier) as? ConversationCellView {
             let onlineStatus : Bool
             if indexPath.section == 0 {
@@ -70,12 +72,12 @@ class ConversationsListViewController: UITableViewController {
             }
             var defaultChat = getDefaultChat(at: indexPath.row)
             dequeuedCell.configure(withName: defaultChat[0] as? String, withMessage: defaultChat[1] as? String, withDate: defaultChat[2] as? Date, withOnline: onlineStatus, withHasUnreadMessages: defaultChat[3] as? Bool)
-
+            
             return dequeuedCell
             
         }
         return UITableViewCell(style: .default, reuseIdentifier: identifier)
- 
+        
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -91,23 +93,37 @@ class ConversationsListViewController: UITableViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if let conversationViewController = segue.destination as? ConversationViewController {
-                if let sourceCell = sender as? ConversationCellView {
-                    conversationViewController.humanName = sourceCell.name ?? ""
-                }
-            } else if let navigationController =  segue.destination as? UINavigationController,
-                      let themesViewController =  navigationController.topViewController as? ThemesViewController {
-                themesViewController.delegate = self
-            } else if let navigationController =  segue.destination as? UINavigationController,
-                      let themesViewControllerSwift = navigationController.topViewController as? ThemesViewControllerSwift {
-                themesViewControllerSwift.closure = logThemeChanging
+        if let conversationViewController = segue.destination as? ConversationViewController {
+            if let sourceCell = sender as? ConversationCellView {
+                conversationViewController.humanName = sourceCell.name ?? ""
+            }
+        } else if let navigationController =  segue.destination as? UINavigationController,
+            let themesViewController =  navigationController.topViewController as? ThemesViewController {
+            themesViewController.delegate = self
+        } else if let navigationController =  segue.destination as? UINavigationController,
+            let themesViewControllerSwift = navigationController.topViewController as? ThemesViewControllerSwift {
+            themesViewControllerSwift.theme = self.theme
+            themesViewControllerSwift.closure = logThemeChangingSwift
+        } else if let navigationController =  segue.destination as? UINavigationController,
+            let profileViewController = navigationController.topViewController as? ProfileViewController {
+            profileViewController.theme = self.theme
+            
         }
     }
-    
+    func setTheme() {
+        navigationController?.navigationBar.barTintColor = self.theme.barTintColor
+        navigationController?.navigationBar.tintColor = self.theme.tintColor
+    }
+
+    func logThemeChangingSwift(selectedTheme: Theme) {
+        print(selectedTheme)
+        self.theme = selectedTheme
+        setTheme()
+    }
     func logThemeChanging(selectedTheme: UIColor) {
         print(selectedTheme)
     }
-
+    
     
 }
 

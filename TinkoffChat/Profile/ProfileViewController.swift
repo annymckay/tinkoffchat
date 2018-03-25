@@ -24,13 +24,13 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet var profilePhotoImage: UIImageView!
     
-    var imagePicker: UIImagePickerController? = UIImagePickerController()
-    
     @IBAction func setProfilePhotoButtonAction(_ sender: UIButton) {
         print("Выбери изображение профиля")
         checkPermission()
         showSetProfilePhotoAlert()
     }
+    var theme : Theme?
+    var imagePicker: UIImagePickerController? = UIImagePickerController()
     
     func showSetProfilePhotoAlert(){
         let setProfilePhotoAlert = UIAlertController(title: "Выберите изображение профиля", message: nil, preferredStyle: .actionSheet)
@@ -71,8 +71,15 @@ class ProfileViewController: UIViewController {
     @IBAction func editAction(_ sender: Any) {
         descriptionLabel.text = "Привет! Учусь разрабатывать мобильные приложения под ios"
     }
-    
+    func setTheme(){
+        if let theme = self.theme {
+            navigationController?.navigationBar.barTintColor = theme.barTintColor
+            navigationController?.navigationBar.tintColor = theme.tintColor
+        }
+    }
     func setDesign(){
+        
+        setTheme()
         nameLabel.text = "Аня Лихтарова"
         
         setProfilePhotoButton.backgroundColor = UIColor.init(red: 63.0/255, green: 120.0/255, blue: 240.0/255, alpha: 1)
