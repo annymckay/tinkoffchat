@@ -24,6 +24,7 @@ class ConversationsListViewController: UITableViewController {
                 chat[2] = Date.init()
             } else {
                 chat[2] = messageDate!
+                //chat[2] = Date.init()
             }
         }
         return chat
@@ -42,6 +43,8 @@ class ConversationsListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        loadTheme()
+        setTheme()
         profileButton.image = UIImage(named: "placeholder-user50x50")?.withRenderingMode(.alwaysOriginal)
         
     }
@@ -113,6 +116,18 @@ class ConversationsListViewController: UITableViewController {
     func setTheme() {
         navigationController?.navigationBar.barTintColor = self.theme.barTintColor
         navigationController?.navigationBar.tintColor = self.theme.tintColor
+    }
+    func loadTheme() {
+        let themes = ThemesSwift()
+        let gcdDataManager = GCDDataManager()
+        gcdDataManager.loadTheme { tag, _ in
+            if let tag = tag {
+                if let themes = themes.getThemeByTag(tag: tag) {
+                self.theme = themes
+                self.setTheme()
+                }
+            }
+        }
     }
 
     func logThemeChangingSwift(selectedTheme: Theme) {

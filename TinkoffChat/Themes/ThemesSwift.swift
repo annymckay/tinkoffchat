@@ -27,4 +27,19 @@ class ThemesSwift{
         self.theme3 = Theme(barTintColor: UIColor.init(red: 252.0/255.0, green: 250.0/255.0, blue: 194.0/255.0, alpha: 1.0),
                        tintColor: UIColor.init(red: 1.0/255.0, green: 9.0/255.0, blue: 26.0/255.0, alpha: 1.0))
     }
+    func getThemeByTag(tag : String) -> Theme? {
+        var theme : Theme?
+        switch tag {
+        case "0":
+            theme = self.theme1
+        case "1":
+            theme = self.theme2
+        case "2":
+            theme = self.theme3
+        default:
+            theme = self.theme1
+        }
+        return theme
+    }
+
 }

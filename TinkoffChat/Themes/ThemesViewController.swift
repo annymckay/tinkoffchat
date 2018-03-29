@@ -34,6 +34,9 @@ class ThemesViewControllerSwift: UIViewController {
             theme = Theme(barTintColor: UIColor.yellow, tintColor: UIColor.blue)
             self.closure?(theme)
         }
+        let gcdDataManager = GCDDataManager()
+        gcdDataManager.theme = String(buttonTag)
+        gcdDataManager.saveTheme {_ in }
         self.theme = theme
         setTheme()
         
@@ -41,6 +44,7 @@ class ThemesViewControllerSwift: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadTheme()
         setTheme()
         
     }
@@ -49,6 +53,16 @@ class ThemesViewControllerSwift: UIViewController {
             self.view.backgroundColor = theme.barTintColor
             navigationController?.navigationBar.barTintColor = theme.barTintColor
             navigationController?.navigationBar.tintColor = theme.tintColor
+        }
+    }
+    func loadTheme() {
+        let themes = ThemesSwift()
+        let gcdDataManager = GCDDataManager()
+        gcdDataManager.loadTheme { tag, _ in
+            if let tag = tag {
+                self.theme = themes.getThemeByTag(tag: tag)
+                self.setTheme()
+            }
         }
     }
 }
