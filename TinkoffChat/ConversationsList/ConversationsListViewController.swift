@@ -14,17 +14,17 @@ class ConversationsListViewController: UITableViewController {
     
     var theme : Theme = Theme()
     func getDefaultChat(at index : Int) -> [Any?] {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM"
-        let messageDateString = "3 MAR"
-        let messageDate = dateFormatter.date(from: messageDateString)
+        //let dateFormatter = DateFormatter()
+       // dateFormatter.dateFormat = "dd MMM"
+       // let messageDateString = "3 MAR"
+        //let messageDate = dateFormatter.date(from: messageDateString)
         var chat = defaultChats[index]
         if let date = defaultChats[index][2] as? Bool {
             if date {
                 chat[2] = Date.init()
             } else {
-                chat[2] = messageDate!
-                //chat[2] = Date.init()
+               // chat[2] = messageDate!
+                chat[2] = Date.init()
             }
         }
         return chat
