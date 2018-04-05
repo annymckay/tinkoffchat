@@ -21,11 +21,13 @@ class ConversationCellView: UITableViewCell, ConversationCellConfiguration {
     var date: Date?
     var online: Bool?
     var hasUnreadMessages: Bool?
+    var userID : String?
     
     
     
-    func configure(withName name: String?, withMessage message : String?, withDate date : Date?, withOnline online : Bool?, withHasUnreadMessages hasUnreadMessages : Bool?) {
+    func configure(withUserID userID: String, withName name: String?, withMessage message : String?, withDate date : Date?, withOnline online : Bool?, withHasUnreadMessages hasUnreadMessages : Bool?) {
         
+        self.userID = userID
         self.name = name
         self.message = message
         self.date = date

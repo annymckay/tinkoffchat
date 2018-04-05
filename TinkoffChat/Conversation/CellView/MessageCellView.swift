@@ -68,19 +68,9 @@ class MessageCellView: UITableViewCell, MessageCellConfiguration {
         bubbleView.translatesAutoresizingMaskIntoConstraints = false
         bubbleView.topAnchor.constraint(equalTo: incomingMessageLabel.topAnchor, constant: -6).isActive = true
         bubbleView.bottomAnchor.constraint(equalTo: incomingMessageLabel.bottomAnchor, constant: 6).isActive = true
-        bubbleView.leftAnchor.constraint(equalTo: incomingMessageLabel.leftAnchor, constant: -25).isActive = true
+        bubbleView.leftAnchor.constraint(equalTo: incomingMessageLabel.leftAnchor, constant: -17).isActive = true
         bubbleView.rightAnchor.constraint(equalTo: incomingMessageLabel.rightAnchor, constant: 13).isActive = true
     }
-    /*override func awakeFromNib() {
-     super.awakeFromNib()
-     // Initialization code
-     }
-     
-     override func setSelected(_ selected: Bool, animated: Bool) {
-     super.setSelected(selected, animated: animated)
-     
-     // Configure the view for the selected state
-     }*/
     
 }
 protocol MessageCellConfiguration : class {

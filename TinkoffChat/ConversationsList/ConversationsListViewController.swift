@@ -12,69 +12,54 @@ class ConversationsListViewController: UITableViewController {
     
     @IBOutlet var profileButton: UIBarButtonItem!
     
+    var dialogsHistory : [String : [Message]]?
     var theme : Theme = Theme()
-    func getDefaultChat(at index : Int) -> [Any?] {
-        //let dateFormatter = DateFormatter()
-       // dateFormatter.dateFormat = "dd MMM"
-       // let messageDateString = "3 MAR"
-        //let messageDate = dateFormatter.date(from: messageDateString)
-        var chat = defaultChats[index]
-        if let date = defaultChats[index][2] as? Bool {
-            if date {
-                chat[2] = Date.init()
-            } else {
-               // chat[2] = messageDate!
-                chat[2] = Date.init()
-            }
-        }
-        return chat
-    }
-    var defaultChats = [ ["Tim Cook", "unread; today's date", true, true],
-                         ["Bill Gates", "unread; not today's date", false, true],
-                         ["Anny Mckay", nil, true, true],
-                         ["Санёк", nil, true, true],
-                         ["Tom Hiddleston", "unread; not today's date", false, true],
-                         ["Teylor Swift", "read; no date", nil, false],
-                         [nil, "no name; unread; today's date", true, true],
-                         ["Петров", "hasUnreadMessages: nil", false, nil],
-                         ["Victor Parker", "Какое-то очень длинное сообщение, которое обрывается в какой-то момент", false, true],
-                         ["Some Guy", nil, false, true],]
+    var multipeerCommunicator : MultipeerCommunicator?
+    var model : ConversationsModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.model = ConversationsModel()
+        self.multipeerCommunicator = MultipeerCommunicator()
+        self.multipeerCommunicator!.model = self.model
+        self.model!.modelChangedCompletion = self.tableView.reloadData
+        dialogsHistory = [:]
         tableView.dataSource = self
         loadTheme()
         setTheme()
         profileButton.image = UIImage(named: "placeholder-user50x50")?.withRenderingMode(.alwaysOriginal)
         
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func viewDidAppear(_ animated: Bool) {
+        self.model!.modelChangedCompletion = self.tableView.reloadData
+        self.tableView.reloadData()
     }
+    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return defaultChats.count
+        if (section == 0) {
+            return model!.chatList.onlineCount
+        } else {
+            return model!.chatList.offlineCount
+        }
+        
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        print("updating cell \(indexPath.row)")
         let identifier = "ConversationCellView"
         
         if let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: identifier) as? ConversationCellView {
-            let onlineStatus : Bool
-            if indexPath.section == 0 {
-                onlineStatus = true
-            } else {
-                onlineStatus = false
-            }
-            var defaultChat = getDefaultChat(at: indexPath.row)
-            dequeuedCell.configure(withName: defaultChat[0] as? String, withMessage: defaultChat[1] as? String, withDate: defaultChat[2] as? Date, withOnline: onlineStatus, withHasUnreadMessages: defaultChat[3] as? Bool)
+
+            let chatList = model!.sortedChatList()[indexPath.row]
+
+            dequeuedCell.configure(withUserID: chatList.userID, withName: chatList.chatInfo.name, withMessage: chatList.chatInfo.message, withDate: chatList.chatInfo.date, withOnline: chatList.chatInfo.isOnline, withHasUnreadMessages: chatList.chatInfo.isUnread)
             
             return dequeuedCell
             
@@ -98,7 +83,11 @@ class ConversationsListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let conversationViewController = segue.destination as? ConversationViewController {
             if let sourceCell = sender as? ConversationCellView {
-                conversationViewController.humanName = sourceCell.name ?? ""
+                let userID = sourceCell.userID!
+                conversationViewController.model = self.model
+                conversationViewController.userID = userID
+                conversationViewController.sendMessage = self.multipeerCommunicator?.sendMessage(string:to:completionHandler:)
+                conversationViewController.userName = sourceCell.name ?? ""
             }
         } else if let navigationController =  segue.destination as? UINavigationController,
             let themesViewController =  navigationController.topViewController as? ThemesViewController {
@@ -113,6 +102,7 @@ class ConversationsListViewController: UITableViewController {
             
         }
     }
+
     func setTheme() {
         navigationController?.navigationBar.barTintColor = self.theme.barTintColor
         navigationController?.navigationBar.tintColor = self.theme.tintColor
@@ -138,6 +128,7 @@ class ConversationsListViewController: UITableViewController {
     func logThemeChanging(selectedTheme: UIColor) {
         print(selectedTheme)
     }
+
     
     
 }
