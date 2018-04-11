@@ -1,19 +1,15 @@
 //
-//  CoreData.swift
+//  CoreDataStack.swift
 //  TinkoffChat
 //
-//  Created by Анна Лихтарова on 04.04.2018.
+//  Created by Анна Лихтарова on 11.04.2018.
 //  Copyright © 2018 Анна Лихтарова. All rights reserved.
 //
 
 import Foundation
 import CoreData
 
-class CoreDataManager {
-    
-    static let instance = CoreDataManager()
-    
-    private init() {}
+class CoreDataStack {
     
     //store
     var storeURL : URL {
@@ -22,8 +18,8 @@ class CoreDataManager {
         return documentsUrl.appendingPathComponent("MyStore.sqlite")
     }
     //model
-    let dataModelName = "Model"
-    let dataModelExtension = "xcdatamodeld"
+    let dataModelName = "CoreDataModel"
+    let dataModelExtension = "momd"
     lazy var managedObjectModel: NSManagedObjectModel = {
         let modelURL = Bundle.main.url(forResource: self.dataModelName, withExtension: self.dataModelExtension)!
         return NSManagedObjectModel(contentsOf: modelURL)!
@@ -41,6 +37,7 @@ class CoreDataManager {
         }
         return coordinator
     }()
+    //context
     lazy var masterContext: NSManagedObjectContext = {
         var masterContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         masterContext.persistentStoreCoordinator = self.persistentStoreCoordinator
@@ -59,9 +56,26 @@ class CoreDataManager {
         saveContext.mergePolicy = NSOverwriteMergePolicy
         return saveContext
     }()
-    /*static func saveName(in context: NSManagedObjectContext) -> User? {
-        if let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: context) as? User {
-            let results = try 
+    public func performSave(context: NSManagedObjectContext, completionHandler : ((String?) -> Void)?) {
+        
+        if context.hasChanges {
+            context.perform { [weak self] in
+                do {
+                    try context.save()
+                }
+                catch {
+                    print("Context save error: \(error)")
+                    completionHandler?("Context save error: \(error)")
+                }
+                
+                if let parent = context.parent {
+                    self?.performSave(context: parent, completionHandler: completionHandler)
+                } else {
+                    completionHandler?(nil)
+                }
+            }
+        } else {
+            completionHandler?(nil)
         }
-    }*/
+    }
 }

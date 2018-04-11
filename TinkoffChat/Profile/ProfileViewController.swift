@@ -13,14 +13,14 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     var userChangedInfo : (name: Bool, description: Bool, photo: Bool) = (false, false, false)
     var theme : Theme?
     var imagePicker : UIImagePickerController? = UIImagePickerController()
-    var dataManager : DataManagerProtocol?
+    //var dataManager : DataManagerProtocol?
+    var dataManager = StorageManager()
     @IBAction func hideProfileButton(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
     
-    @IBOutlet var gcdButton: UIButton!
-    @IBOutlet var operationButton: UIButton!
+    @IBOutlet var savingButton: UIButton!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var setProfilePhotoButton: UIButton!
@@ -35,44 +35,41 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         checkPermission()
         showSetProfilePhotoAlert()
     }
-
-    @IBAction func saveWithGCD(_ sender: UIButton) {
+    
+    @IBAction func saveUserDataAction(_ sender: UIButton) {
         self.view.endEditing(true)
-        dataManager = GCDDataManager()
         saveUserData()
     }
-
-    @IBAction func saveWithOperation(_ sender: UIButton) {
-        self.view.endEditing(true)
-        dataManager = OperationDataManager()
-        saveUserData()
-    }
+    
     func saveUserData() {
         savingDataActivityIndicator.startAnimating()
         buttonsEnabled(are: false)
         setProfilePhotoButton.isEnabled = false
-        
+        var name, info : String?
+        var photo : UIImage?
         if (userChangedInfo.name) {
-            dataManager!.userName = nameTextField.text
+            name = nameTextField.text
         }
         if (userChangedInfo.description) {
-            dataManager!.userDescription = descriptionTextView.text
+            info = descriptionTextView.text
         }
         if (userChangedInfo.photo) {
-            dataManager!.userPhoto = profilePhotoImage.image
+            photo = profilePhotoImage.image
         }
-        dataManager!.saveData {
-            error in
-            self.savingDataActivityIndicator.stopAnimating()
-            if (error != nil) {
-                self.showDataWasNotSavedAlert()
-            }
-            else {
-                self.showDataSavedAlert()
+        dataManager.saveAppUser(name: name, info: info, photo: photo) {
+            errorString in
+            DispatchQueue.main.async {
+                self.savingDataActivityIndicator.stopAnimating()
+                if (errorString != nil) {
+                    self.showDataWasNotSavedAlert()
+                }
+                else {
+                    self.showDataSavedAlert()
+                }
             }
         }
     }
-
+    
     @objc private func textFieldDidChange(_ textField: UITextField) {
         userChangedInfo.name = true
         buttonsEnabled(are: true)
@@ -83,25 +80,20 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     }
     func loadUserData() {
         savingDataActivityIndicator.startAnimating()
-        if (dataManager == nil) {
-            dataManager = GCDDataManager()
-        }
-        dataManager!.loadData { error in
-            if (error == nil) {
-                if let name = self.dataManager!.userName {
-                    self.nameTextField.text = name
-                }
-                if let description = self.dataManager!.userDescription {
-                    self.descriptionTextView.text = description
-                }
-                if let photo = self.dataManager!.userPhoto {
-                    self.profilePhotoImage.image = photo
-                }
+        let appUser = dataManager.loadAppUser()
+        if let appUser = appUser {
+            if let name = appUser.name {
+                self.nameTextField.text = name
             }
-            self.savingDataActivityIndicator.stopAnimating()
+            if let description = appUser.info {
+                self.descriptionTextView.text = description
+            }
+            if let photo = appUser.photo {
+                self.profilePhotoImage.image = UIImage(data: photo as Data)
+            }
         }
+        self.savingDataActivityIndicator.stopAnimating()
     }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         buttonsHidden(are: true)
@@ -223,7 +215,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         descriptionTextView.layer.borderWidth = 0
         descriptionTextView.layer.borderColor = UIColor.clear.cgColor
         descriptionTextView.isEditable = false
-
+        
         nameTextField.borderStyle = .none
         nameTextField.isEnabled = false
     }
@@ -247,13 +239,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         editButton.layer.borderWidth = 1
         editButton.layer.borderColor = UIColor.black.cgColor
         
-        gcdButton.layer.cornerRadius = 15
-        gcdButton.layer.borderWidth = 1
-        gcdButton.layer.borderColor = UIColor.black.cgColor
-        
-        operationButton.layer.cornerRadius = 15
-        operationButton.layer.borderWidth = 1
-        operationButton.layer.borderColor = UIColor.black.cgColor
+        savingButton.layer.cornerRadius = 15
+        savingButton.layer.borderWidth = 1
+        savingButton.layer.borderColor = UIColor.black.cgColor
+
     }
     @objc func keyboardWillAppear(notification: NSNotification) {
         if (self.view.frame.origin.y < 0) {
@@ -319,12 +308,10 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
     }
     func buttonsEnabled(are isEnabled: Bool) {
-            gcdButton.isEnabled = isEnabled
-            operationButton.isEnabled = isEnabled
+        savingButton.isEnabled = isEnabled
     }
     func buttonsHidden(are isHidden: Bool) {
-        gcdButton.isHidden = isHidden
-        operationButton.isHidden = isHidden
+        savingButton.isHidden = isHidden
         setProfilePhotoButton.isHidden = isHidden
     }
     

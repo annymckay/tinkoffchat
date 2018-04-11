@@ -299,7 +299,6 @@
         <!--Navigation Controller-->
         <scene sceneID="icb-ke-Vnp">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2EN-5J-mC4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="15d-yz-iBT" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="L5E-ox-ZNs">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -309,6 +308,7 @@
                         <segue destination="j36-JV-Oyc" kind="relationship" relationship="rootViewController" id="QNZ-Q6-p4s"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2EN-5J-mC4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1586" y="111"/>
         </scene>
@@ -369,29 +369,16 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                             </textView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulm-KE-pZ0">
-                                <rect key="frame" x="20" y="591" width="157.5" height="56"/>
+                                <rect key="frame" x="20" y="591" width="335" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="EO3-Ye-8bj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="GCD">
+                                <state key="normal" title="Сохранить">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveWithGCD:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gp9-S4-8bM"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dtc-Cq-vMn">
-                                <rect key="frame" x="197.5" y="591" width="157.5" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="iQ1-CE-r9J"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Operation">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveWithOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AU1-c7-iST"/>
+                                    <action selector="saveUserDataAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gp9-S4-8bM"/>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Nln-yu-HXO">
@@ -400,12 +387,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Dtc-Cq-vMn" firstAttribute="width" secondItem="ulm-KE-pZ0" secondAttribute="width" id="0TN-3r-cdb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ulm-KE-pZ0" secondAttribute="trailing" constant="20" id="06u-0s-bm0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ulm-KE-pZ0" secondAttribute="bottom" constant="20" id="3Vv-7p-tkG"/>
                             <constraint firstItem="Nln-yu-HXO" firstAttribute="top" secondItem="0G5-lg-S42" secondAttribute="bottom" id="4qt-Aq-Hsz"/>
                             <constraint firstItem="0G5-lg-S42" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="5XH-qd-2WZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lGL-w9-JdQ" secondAttribute="trailing" constant="20" id="DK6-bh-0mq"/>
-                            <constraint firstItem="Dtc-Cq-vMn" firstAttribute="leading" secondItem="ulm-KE-pZ0" secondAttribute="trailing" constant="20" id="DLy-Pp-4dw"/>
                             <constraint firstItem="lGL-w9-JdQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HYE-4r-dz7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IpH-XJ-CWU" secondAttribute="trailing" constant="20" id="MPv-vi-jqE"/>
                             <constraint firstItem="I2b-yE-APh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Ogf-ox-UGv"/>
@@ -419,10 +405,8 @@
                             <constraint firstItem="lGL-w9-JdQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="k2I-QX-cRk"/>
                             <constraint firstItem="lGL-w9-JdQ" firstAttribute="bottom" secondItem="bPW-z1-oFb" secondAttribute="bottom" id="mvg-Iv-rep"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0G5-lg-S42" secondAttribute="trailing" constant="20" id="nVs-ij-som"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Dtc-Cq-vMn" secondAttribute="trailing" constant="20" id="oh8-27-gbR"/>
                             <constraint firstItem="lGL-w9-JdQ" firstAttribute="trailing" secondItem="bPW-z1-oFb" secondAttribute="trailing" id="wPV-rT-vVd"/>
                             <constraint firstItem="IpH-XJ-CWU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="x1U-ab-aTy"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Dtc-Cq-vMn" secondAttribute="bottom" constant="20" id="zgb-nL-48z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -437,10 +421,9 @@
                     <connections>
                         <outlet property="descriptionTextView" destination="I2b-yE-APh" id="mj1-hB-cCK"/>
                         <outlet property="editButton" destination="IpH-XJ-CWU" id="EVO-j8-jYf"/>
-                        <outlet property="gcdButton" destination="ulm-KE-pZ0" id="q8x-VJ-a6a"/>
                         <outlet property="nameTextField" destination="0G5-lg-S42" id="N2k-J0-7fV"/>
-                        <outlet property="operationButton" destination="Dtc-Cq-vMn" id="6Qj-Jj-PmG"/>
                         <outlet property="profilePhotoImage" destination="lGL-w9-JdQ" id="3AZ-s4-u5N"/>
+                        <outlet property="savingButton" destination="ulm-KE-pZ0" id="q8x-VJ-a6a"/>
                         <outlet property="savingDataActivityIndicator" destination="Nln-yu-HXO" id="3MD-C0-ao7"/>
                         <outlet property="setProfilePhotoButton" destination="bPW-z1-oFb" id="X3R-B2-8FJ"/>
                     </connections>
